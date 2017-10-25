@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() 
+{
+	string slovo, a, b, allowed = "qwertyuiopasdfghjklzxcvbnm1234567890";
+	cout << "Enter your word: " << endl;
+	getline(cin, slovo);
+	unsigned long Length = slovo.length();
+	int t = 1, i, j;
+
+	for (i = 0; i < Length; i++)
+	{
+		a += (char)tolower(slovo[i]);
+	}
+
+	for (i = 0; i < Length; ++i) 
+	{
+		for (j = 0; j < allowed.length(); j++)
+		{
+			if (a[i] == allowed[j]) b += a[i];
+		}
+	}
+
+	Length = b.length();
+	for (i = 0; i < Length / 2; ++i)
+	{
+		if (b[i] != b[Length - i - 1]) t = 0;
+	}
+	
+	cout << "Result: \n" << t << '\n';
+	return 0;
+}
